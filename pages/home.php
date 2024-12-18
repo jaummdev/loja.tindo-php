@@ -16,5 +16,23 @@ include("./services/api.php");
         include("components/floatButton.php");
         include("components/header.php");
     ?>
+
+    <section class="slider-container">
+        <div class="slider">
+            <section class="slider-controls">
+                <div class="slider-controls-left">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </div>
+                
+                <div class="slider-controls-right">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </section>
+            
+            <section class="slider-content">
+                <img src="<?php echo $data_config['slider1_imagem']; ?>" alt="Imagem do slider">
+            </section>
+        </div>
+    </section>  
 </body>
 </html>

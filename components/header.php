@@ -12,6 +12,8 @@ $categoriasSite = $data_config["categoriasSite"];
         </a>
     </section>
 
+    <span class="hr-line"></span>
+
     <section>
         <ul>
             <?php foreach ($menuItems as $item) { ?>

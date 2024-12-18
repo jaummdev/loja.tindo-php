@@ -6,9 +6,8 @@ header{
     width: 100%;
     padding: 30px 80px;
     background-color: #005abb;
-    gap: 28px;
+    gap: 20px;
     flex-wrap: wrap;
-    
 }
 header section ul{
     display: flex;
