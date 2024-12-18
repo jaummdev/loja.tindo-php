@@ -1,0 +1,33 @@
+header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 30px 80px;
+    background-color: #005abb;
+    gap: 28px;
+    flex-wrap: wrap;
+    
+}
+header section ul{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    color: #fff;
+    gap: 4px;
+}
+header section ul li{
+    border-radius: 4px;
+    padding: 10px 14px;
+    cursor: pointer;
+}
+header section ul li a{
+    color: #fff;
+}
+header section ul li::first-letter{
+    text-transform: uppercase;
+}
+header section ul li:hover{
+    background-color: #e67c47;
+}
