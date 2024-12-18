@@ -1,16 +1,14 @@
 .float-button{
-    position: absolute;
+    position: fixed;
     display: flex;
     border: none;
     outline: none;
-    padding: 15px 20px;
+    padding: 16px 20px;
     font-size: 3rem;
+    color: #fff;
     background-color: #25d366;
-    border-radius: 100%;
+    border-radius: 100px;
     bottom: 3rem;
     right: 3rem;
-
-}
-.float-button a{
-    color: #fff;
+    z-index: 100;
 }

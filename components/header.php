@@ -3,9 +3,10 @@ include("../../services/api.php");
 
 $menuItems = $data_config["menu"];
 $categoriasSite = $data_config["categoriasSite"];
+
 ?>
 
-<header>
+<header style="background: <?php echo $data_config["corHeader"]; ?>">
     <section>
         <a href="#">
             <img width="200" src="<?php echo $data_config["logoCabecalho"]; ?>" alt="Logo">
@@ -17,7 +18,7 @@ $categoriasSite = $data_config["categoriasSite"];
     <section>
         <ul>
             <?php foreach ($menuItems as $item) { ?>
-                <li>
+                <li style="--menuHover-color: <?php echo $data_config['corMenuHover'];?>">
                     <?php 
                     if ($item["tipo"] === "LINK" && isset($item["url"])) { 
                         echo '<a href="' . $item["url"] . '">' . $item["nome"] . '</a>';

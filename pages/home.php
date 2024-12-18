@@ -33,6 +33,49 @@ include("./services/api.php");
                 <img src="<?php echo $data_config['slider1_imagem']; ?>" alt="Imagem do slider">
             </section>
         </div>
-    </section>  
+    </section>
+
+    <section class="cards-container">
+        <?php foreach ($data_galeria as $item) { ?>
+            <div class="card-wrapper">
+                <section class="card-image">
+                    <img src="<?php echo $item['imagemCapa']; ?>" alt="Imagem da galeria">
+                </section>
+
+                <section class="card-description">
+                    <?php if($item["alerta"] != ""){?>
+                        <div class="card-description-alert">
+                            <p><?php echo $item["alerta"]; ?></p>
+                        </div>
+                    <?php } ?>
+                    <div class="card-description-info">
+                        <h2 class="card-title" style="color: <?php echo $data_config["corHeader"]?>;"><?php echo $item['titulo']; ?></h2>
+                        <p class="card-subTitle"><?php echo $item['subTitulo']; ?></p>
+                        <p class="card-duration"> 
+                            <?php 
+                                if ($item['duracaoServico'] != ""){
+                                    echo '<i class="fa-regular fa-clock"></i>';
+                                    echo $item['duracaoServico'];
+                                }
+                            ?>
+                        </p>
+                    </div>
+
+                    <div class="card-description-value">
+                        <div>
+                            <?php 
+                                if ($item['exibirValorGaleria'] == "true"){
+                                    echo '<p>'. $item['labelValorGaleria'] . '</p>';
+                                }
+                            ?>
+                            <h3><?php echo $item['valorFinal']; ?></h3>
+                        </div>
+
+                        <button style="background: <?php echo $data_config["corTema"]?>;"><?php echo $item['botaoGaleria']; ?></button>
+                    </div>
+                </section>
+            </div>
+        <?php } ?>
+    </section>
 </body>
 </html>

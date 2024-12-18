@@ -25,6 +25,7 @@ function callAPI($url) {
 
 // Chama a API para obter os dados necessários
 try {
+    $data_api = callAPI('https://api.tindo.com.br/ecommerce/');
     $data_galeria = callAPI('https://api.tindo.com.br/ecommerce/galeria');
     $data_config = callAPI('https://api.tindo.com.br/ecommerce/configuracao');
 } catch (Exception $e) {

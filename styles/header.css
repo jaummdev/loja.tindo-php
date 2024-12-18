@@ -5,7 +5,6 @@ header{
     align-items: center;
     width: 100%;
     padding: 30px 80px;
-    background-color: #005abb;
     gap: 20px;
     flex-wrap: wrap;
 }
@@ -28,5 +27,5 @@ header section ul li::first-letter{
     text-transform: uppercase;
 }
 header section ul li:hover{
-    background-color: #e67c47;
+    background-color: var(--menuHover-color);
 }
