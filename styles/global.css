@@ -1,6 +1,7 @@
 @import "./header.css";
 @import "./home.css";
 @import "./floatButton.css";
+@import "./footer.css";
 
 *{
     margin: 0;
@@ -9,6 +10,11 @@
     text-decoration: none;
     list-style-type: none;
     font-family: sans-serif;
+}
+
+.container{
+    width: 100%;
+    min-height: calc(100vh - 500px);
 }
 
 .hr-line{

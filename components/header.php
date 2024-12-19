@@ -1,14 +1,11 @@
 <?php
-include("../../services/api.php");
-
-$menuItems = $data_config["menu"];
-$categoriasSite = $data_config["categoriasSite"];
-
+    $menuItems = $data_config["menu"];
+    $categoriasSite = $data_config["categoriasSite"];
 ?>
 
 <header style="background: <?php echo $data_config["corHeader"]; ?>">
     <section>
-        <a href="#">
+        <a href="/">
             <img width="200" src="<?php echo $data_config["logoCabecalho"]; ?>" alt="Logo">
         </a>
     </section>

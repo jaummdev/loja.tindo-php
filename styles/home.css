@@ -148,3 +148,14 @@
     gap: 8px;
     color: #9b9b9b;
 }
+.above-footer{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 5%;
+    gap: 2%;
+}
+.above-footer img{
+    width: 100%;
+    max-width: 250px;
+}

@@ -23,13 +23,16 @@ function callAPI($url) {
     return json_decode($response, true);
 }
 
-// Chama a API para obter os dados necessários
+// Carrega dados apenas uma vez
 try {
-    $data_api = callAPI('https://api.tindo.com.br/ecommerce/');
-    $data_galeria = callAPI('https://api.tindo.com.br/ecommerce/galeria');
-    $data_config = callAPI('https://api.tindo.com.br/ecommerce/configuracao');
+    $data_api = [
+        'config' => callAPI('https://api.tindo.com.br/ecommerce/configuracao'),
+        'galeria' => callAPI('https://api.tindo.com.br/ecommerce/galeria')
+    ];
+    $data_config = $data_api['config'];
+    $data_galeria = $data_api['galeria'];
 } catch (Exception $e) {
-    echo 'Ocorreu um erro: ' . $e->getMessage();
+    echo 'Ocorreu um erro ao carregar os dados: ' . $e->getMessage();
     exit;
 }
 ?>
