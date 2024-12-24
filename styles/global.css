@@ -3,6 +3,7 @@
 @import "./floatButton.css";
 @import "./footer.css";
 @import "./visualizar.css";
+@import "./carrinho.css";
 
 * {
     margin: 0;

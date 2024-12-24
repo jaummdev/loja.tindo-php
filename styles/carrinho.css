@@ -1,0 +1,105 @@
+.carrinho-container{
+    display: flex;
+    width: 70%;
+    margin: 20px auto;
+    border-radius: 8px;
+    background-color: #f3f3f3;
+    padding: 16px 20px;
+    gap: 20px;
+    justify-content: space-between;
+}
+.carrinho{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.carrinho-header{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #e4e4e4;
+    padding: 10px 20px;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    color: #151515;
+}
+.carrinho-resumo{
+    display: flex;
+    width: 45%;
+    height: max-content;
+    flex-direction: column;
+    border-radius: 6px;
+    background-color: #fff;
+}
+.carrinho-resumo-header{
+    text-align: center;
+    padding: 19px;
+    background-color: #151515;
+    color: #fff;
+    border-radius: 6px;
+}
+.carrinho-resumo-content{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.carrinho-resumo-content .carrinho-resumo-itens{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.carrinho-resumo-itens p,
+.carrinho-resumo-itens h2{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 0;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.carrinho-item-container{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.carrinho-item{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+}
+.carrinho-item .item-imagem{
+    display: flex;
+    width: 250px;
+    height: 150px;
+}
+.carrinho-item .item-imagem img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+.item-info{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #191919;
+}
+.item-detalhes{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.item-quantidade{
+    display: flex;
+    gap: 8px;
+}
+.item-valor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    height: fit-content;
+}

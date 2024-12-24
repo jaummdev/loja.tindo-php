@@ -5,14 +5,20 @@ $categoriasSite = $data_config["categoriasSite"];
 
 <header style="background: <?php echo $data_config["corHeader"]; ?>">
     <section>
-        <a href="">
+        <a href="/">
             <img width="200" src="<?php echo $data_config["logoCabecalho"]; ?>" alt="Logo">
         </a>
     </section>
 
     <hr>
 
-    <section class="menu-routes">
+    <section>
+        <button class="menu-toggle" id="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </section>
+
+    <nav class="menu-routes" id="menu-routes">
         <ul>
             <?php foreach ($menuItems as $item) { ?>
                 <li style="--menuHover-color: <?php echo $data_config['corMenuHover']; ?>">
@@ -21,7 +27,7 @@ $categoriasSite = $data_config["categoriasSite"];
                         echo '<a href="' . $item["url"] . '">' . $item["nome"] . '</a>';
                     } elseif (in_array($item["nome"], $categoriasSite)) {
                         $categoriaSite = urlencode($item["nome"]);
-                        echo '<a href="?categoriaSite=' . $categoriaSite . '">' . $item["nome"] . '</a>';
+                        echo '<a href="/?categoriaSite=' . $categoriaSite . '">' . $item["nome"] . '</a>';
                     } else {
                         echo $item["nome"];
                     }
@@ -36,5 +42,14 @@ $categoriasSite = $data_config["categoriasSite"];
                 <i class="fa-solid fa-cart-shopping"></i>
             </a>
         </section>
-    </section>
+    </nav>
 </header>
+<script>
+    // Menu Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const menuRoutes = document.getElementById('menu-routes');
+
+    menuToggle.addEventListener('click', () => {
+        menuRoutes.classList.toggle('show');
+    });
+</script>

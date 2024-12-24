@@ -83,14 +83,14 @@ addToCartButton.addEventListener('click', () => {
   }
 
   // Verificar se o horário foi selecionado
-  if (!horarioPasseioElement || horarioPasseioElement.value === "") {
+  if (!horarioPasseioElement) {
     horarioPasseioElement.style.border = '1px solid red';
     alert('Por favor, selecione um horário de passeio válido.');
     return;
   }
 
   // Verificar se o local de embarque foi selecionado
-  if (!localEmbarqueElement || localEmbarqueElement.value === "") {
+  if (!localEmbarqueElement) {
     localEmbarqueElement.style.border = '1px solid red';
     alert('Por favor, selecione um local de embarque válido.');
     return;
@@ -98,9 +98,10 @@ addToCartButton.addEventListener('click', () => {
 
   const detalhes = {
     id: itemDetalhes.id,
+    imagemCapa: itemDetalhes.imagemCapa,
     nome: itemDetalhes.nome,
     descricaoSite: itemDetalhes.descricaoSite,
-    valorDestaque: itemDetalhes.valorDestaque,
+    valorDestaque: itemDetalhes.valorDestaque || 0,
     quantidades: {},
     horarioPasseio: horarioPasseioElement.value,
     localEmbarque: localEmbarqueElement.value,
@@ -144,39 +145,80 @@ function adicionarAoCarrinho(itemDetalhes) {
 function listarCarrinho() {
   const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
   const carrinhoContainer = document.querySelector('#carrinho-itens');
+  const quantidadeItensElement = document.querySelector('#quantidade-itens');
+  const resumoTotalElement = document.querySelector('.carrinho-resumo-total');
 
   if (!carrinhoContainer) {
     console.error('Elemento #carrinho-itens não encontrado no DOM.');
     return;
   }
 
+  // Limpar conteúdo existente
   carrinhoContainer.innerHTML = '';
 
   if (carrinho.length === 0) {
-    carrinhoContainer.innerHTML = '<p>Seu carrinho está vazio.</p>';
+    carrinhoContainer.innerHTML = '<p style="margin: 0 auto;">Seu carrinho está vazio.</p>';
+    if (quantidadeItensElement) quantidadeItensElement.textContent = 0;
+    if (resumoTotalElement) resumoTotalElement.innerHTML = 'R$ 0,00';
     return;
   }
 
-  // Adicionar os itens do carrinho ao contêiner
+  // Atualizar a quantidade total de itens
+  if (quantidadeItensElement) quantidadeItensElement.textContent = carrinho.length;
+
+  let valorTotal = 0;
+
   carrinho.forEach(item => {
     const itemDiv = document.createElement('div');
     itemDiv.className = 'carrinho-item';
+
+    const imagemCapa = item.imagemCapa ? item.imagemCapa : '';
+
+    const valorBruto = item.valorDestaque || '0';
+    const valorNumerico = parseFloat(valorBruto.replace('R$', '').replace('.', '').replace(',', '.')) || 0;
+
+    const quantidadeTotalItem = Object.values(item.quantidades).reduce((acc, cur) => acc + cur, 0);
+    const valorTotalItem = valorNumerico * quantidadeTotalItem;
+
+    valorTotal += valorTotalItem;
+
     itemDiv.innerHTML = `
-      <h2>${item.nome}</h2>
-      <p>${item.descricaoSite}</p>
-      <span>Preço: ${item.valorDestaque || 'Não informado'}</span>
-      <p>Horário: ${item.horarioPasseio}</p>
-      <p>Local de Embarque: ${item.localEmbarque}</p>
-      <p>Data: ${item.dataPasseio}</p>
-      <ul>
-        ${Object.entries(item.quantidades)
-        .map(([key, value]) => `<li>${key}: ${value}</li>`)
+      <div class="item-imagem">
+        <img src="${imagemCapa}" alt="Imagem do ${item.nome}"/>
+      </div>
+
+      <section class="item-detalhes">
+        <div class="item-info">
+          <h2>${item.nome}</h2>
+          <p><i class="fa-regular fa-clock"></i> ${item.horarioPasseio}</p>
+          <p><i class="fa-solid fa-location-dot"></i> ${item.localEmbarque}</p>
+          <p><i class="fa-regular fa-calendar-days"></i> ${item.dataPasseio}</p>
+
+          <div class="item-quantidade">
+              <i class="fa-solid fa-users"></i>
+              <ul>
+              ${Object.entries(item.quantidades)
+        .map(([key, value]) => value > 0 ? `<li>${key.replace('label', '')}: ${value}</li>` : null)
+        .filter(Boolean)
         .join('')}
-      </ul>
-      <button onclick="removerItem(${JSON.stringify(item.id)})">Remover</button>
+              </ul>
+          </div>
+        </div>
+  
+        <div class="item-valor">
+          <h3>${item.valorDestaque || 'Não informado'}</h3>
+
+          <button style="display: flex; color: white; gap: 8px; background-color: red;" onclick="removerItem(${JSON.stringify(item.id)})">
+            <i class="fa-solid fa-trash-can"></i>
+          </button>
+        </div>
+      </section>
     `;
     carrinhoContainer.appendChild(itemDiv);
   });
+
+  if (resumoTotalElement) resumoTotalElement.innerHTML = `R$ ${valorTotal.toFixed(2)}`;
+
 }
 
 // Função para remover um item do carrinho

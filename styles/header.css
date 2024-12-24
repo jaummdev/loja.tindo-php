@@ -1,4 +1,4 @@
-header{
+header {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,39 +8,67 @@ header{
     gap: 20px;
     flex-wrap: wrap;
 }
-header section ul{
+
+header nav ul {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     color: #fff;
     gap: 4px;
 }
-header section ul li{
+
+header nav ul li {
     border-radius: 4px;
     padding: 10px 14px;
     cursor: pointer;
 }
-header section ul li a{
+
+header nav ul li a {
     color: #fff;
 }
-header section ul li::first-letter{
+
+header nav ul li::first-letter {
     text-transform: uppercase;
 }
-header section ul li:hover{
+
+header nav ul li:hover {
     background-color: var(--menuHover-color);
 }
-.menu-routes{
+
+.menu-routes {
     display: flex;
     align-items: center;
+    flex-direction: column;
     gap: 30px;
 }
-.menu-routes .to-cart a{
+
+.menu-routes .to-cart a {
     font-size: 20px;
     color: #fff;
     cursor: pointer;
     padding: 12px;
     border-radius: 8px;
 }
-.menu-routes .to-cart a:hover{
+
+.menu-routes .to-cart a:hover {
     background-color: var(--menuHover-color);
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.16);
+}
+
+
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+    .menu-routes{
+        display: none;
+    }
+    .menu-routes.show {
+        display: flex;
+    }
 }
