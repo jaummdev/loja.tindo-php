@@ -1,5 +1,10 @@
 RewriteEngine On
-RewriteBase /projeto/
+RewriteBase /loja.tindo-php/
+
+# Redireciona para visualizar.php com parâmetros tipo e id
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php?page=$1 [L,QSA]
+RewriteRule ^visualizar/([^/]+)/([^/]+)$ visualizar.php?tipo=$1&id=$2 [L,QSA]
+
+# Redireciona as rotas amigáveis para index.php?page=<nome da página>
+RewriteRule ^(home|carrinho|visualizar)$ index.php?page=$1 [L,QSA]
