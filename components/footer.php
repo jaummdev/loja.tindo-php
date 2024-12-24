@@ -17,27 +17,27 @@
             <h3>Redes sociais</h3>
             <div>
                 <li>
-                    <a href="<?php $data_config["instagram"] ?>">
+                    <a href="<?php echo $data_config["instagram"] ?>">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="<?php $data_config["facebook"] ?>">
+                    <a href="<?php echo $data_config["facebook"] ?>">
                         <i class="fa-brands fa-facebook"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="<?php $data_config["twitter"] ?>">
+                    <a href="<?php echo $data_config["twitter"] ?>">
                         <i class="fa-brands fa-twitter"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="<?php $data_config["youtube"] ?>">
+                    <a href="<?php echo $data_config["youtube"] ?>">
                         <i class="fa-brands fa-youtube"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="<?php $data_config["whatsAppApi"] ?>">
+                    <a href="<?php echo $data_config["whatsAppApi"] ?>">
                         <i class="fa-brands fa-whatsapp"></i>
                     </a>
                 </li>

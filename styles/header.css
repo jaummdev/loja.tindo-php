@@ -29,3 +29,18 @@ header section ul li::first-letter{
 header section ul li:hover{
     background-color: var(--menuHover-color);
 }
+.menu-routes{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.menu-routes .to-cart a{
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 8px;
+}
+.menu-routes .to-cart a:hover{
+    background-color: var(--menuHover-color);
+}

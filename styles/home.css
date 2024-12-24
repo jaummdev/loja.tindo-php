@@ -16,7 +16,7 @@
     height: 350px;
     margin: 0 13%;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 12px;
 }
 .slider-controls{
     position: absolute;
@@ -26,8 +26,9 @@
     height: 100%;
     font-size: 28px;
     color: #fff;
-    background-color: rgba(rgba(0, 0, 0, 0.8));
+    background-color: rgba(rgba(0, 0, 0, 0.3));
     cursor: pointer;
+    z-index: 10;
 }
 .slider-controls-left,
 .slider-controls-right{
@@ -51,10 +52,7 @@
     background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
 }
 
-.slider-content{
-    width: 100%;
-    height: 100%;
-}
+.slider-content,
 .slider-content img{
     width: 100%;
     height: 100%;

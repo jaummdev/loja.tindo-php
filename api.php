@@ -27,7 +27,7 @@ function callAPI($url) {
 try {
     $data_api = [
         'config' => callAPI('https://api.tindo.com.br/ecommerce/configuracao'),
-        'galeria' => callAPI('https://api.tindo.com.br/ecommerce/galeria')
+        'galeria' => callAPI('https://api.tindo.com.br/ecommerce/galeria'),
     ];
     $data_config = $data_api['config'];
     $data_galeria = $data_api['galeria'];

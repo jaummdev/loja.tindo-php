@@ -2,8 +2,9 @@
 @import "./home.css";
 @import "./floatButton.css";
 @import "./footer.css";
+@import "./visualizar.css";
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,18 +13,23 @@
     font-family: sans-serif;
 }
 
-.container{
+.container {
     width: 100%;
-    min-height: calc(100vh - 500px);
+    min-height: calc(100vh - 550px);
 }
 
-.hr-line{
-    display: flex;
+hr {
     width: 100%;
     height: 1px;
+    outline: none;
+    border: none;
     background-color: rgba(255, 255, 255, 0.25);
 }
-button{
+hr.dark{
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+button {
     color: #fff;
     border-radius: 8px;
     outline: none;
@@ -36,6 +42,56 @@ button{
     transition: .3s;
     text-transform: uppercase;
 }
-button:hover{
+
+button:hover {
     opacity: .8;
+}
+
+.quantity-control {
+    display: flex;
+    margin: 8px 0;
+    gap: 8px;
+}
+
+.quantity-control li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #d2d2d2;
+    border-radius: 50%;
+    color: #000;
+    user-select: none;
+}
+
+.quantity-control li:hover {
+    background-color: #e0e0e0;
+}
+
+.quantity-input {
+    width: 30px;
+    text-align: center;
+    font-size: 18px;
+    border: none;
+    user-select: none;
+    background-color: transparent;
+}
+
+input[type="date"]{
+    background-color: #f6f6f6;
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    text-align: center;
+}
+::-webkit-calendar-picker-indicator{
+    background-color: #ffffff;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
 }
