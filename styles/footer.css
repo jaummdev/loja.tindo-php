@@ -9,8 +9,9 @@ footer{
     width: 100%;
     flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
     color: var(--color-base);
-    padding: 3em 20em;
+    padding: 5em 15em;
     margin-top: 2em;
 }
 
@@ -20,6 +21,7 @@ footer main{
     justify-content: space-between;
     width: 100%;
     margin-bottom: 40px;
+    gap: 40px;
 }
 
 footer h3{
@@ -76,4 +78,17 @@ footer a:hover{
 }
 .footer-address p{
     text-align: center;
+}
+
+@media screen and (max-width: 1024px){
+    footer{
+        padding: 3em 5em;
+    }
+}
+
+@media screen and (max-width: 640px){
+    footer main{
+        text-align: center;
+        justify-content: center;
+    }
 }

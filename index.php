@@ -32,6 +32,8 @@ if (!file_exists($pageFile)) {
         // Passando os dados PHP para o JavaScript
         const itemDetalhes = <?php echo json_encode($itemDetalhes); ?>;
     </script>
+    <script src="script/cart.js"></script>
+    <script src="script/slides.js"></script>
     <script src="script/script.js"></script>
 </body>
 

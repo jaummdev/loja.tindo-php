@@ -38,7 +38,6 @@ header nav ul li:hover {
 .menu-routes {
     display: flex;
     align-items: center;
-    flex-direction: column;
     gap: 30px;
 }
 
@@ -67,6 +66,7 @@ header nav ul li:hover {
     }
     .menu-routes{
         display: none;
+        flex-direction: column;
     }
     .menu-routes.show {
         display: flex;
