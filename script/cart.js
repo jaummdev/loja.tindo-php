@@ -124,28 +124,30 @@ function listarCarrinho() {
 
       <section class="item-detalhes">
         <div class="item-info">
-          <h2>${item.nome}</h2>
-          <p><i class="fa-regular fa-clock"></i> ${item.horarioPasseio}</p>
-          <p><i class="fa-solid fa-location-dot"></i> ${item.localEmbarque}</p>
-          <p><i class="fa-regular fa-calendar-days"></i> ${item.dataPasseio}</p>
+            <div class="item-nome">
+                <h2>${item.nome}</h2>
+                <button style="display: flex; align-items: center; color: white; gap: 8px; background-color: red;" onclick="removerItem(${JSON.stringify(item.id)})">
+                    <i class="fa-solid fa-trash-can"></i>
+                </button>
+            </div>
 
-          <div class="item-quantidade">
-              <i class="fa-solid fa-users"></i>
-              <ul>
-              ${Object.entries(item.quantidades)
-                .map(([key, value]) => value > 0 ? `<li>${key.replace('label', '')}: ${value}</li>` : null)
-                .filter(Boolean)
-                .join('')}
-              </ul>
-          </div>
+            <p><i class="fa-regular fa-clock"></i> ${item.horarioPasseio}</p>
+            <p><i class="fa-solid fa-location-dot"></i> ${item.localEmbarque}</p>
+            <p><i class="fa-regular fa-calendar-days"></i> ${item.dataPasseio}</p>
+
+            <div class="item-quantidade">
+                <i class="fa-solid fa-users"></i>
+                <ul>
+                ${Object.entries(item.quantidades)
+                    .map(([key, value]) => value > 0 ? `<li>${key.replace('label', '')}: ${value}</li>` : null)
+                    .filter(Boolean)
+                    .join('')}
+                </ul>
+            </div>
         </div>
   
         <div class="item-valor">
           <h3>${item.valorDestaque || 'Não informado'}</h3>
-
-          <button style="display: flex; color: white; gap: 8px; background-color: red;" onclick="removerItem(${JSON.stringify(item.id)})">
-            <i class="fa-solid fa-trash-can"></i>
-          </button>
         </div>
       </section>
     `;

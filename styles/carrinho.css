@@ -1,6 +1,7 @@
 .carrinho-container{
     display: flex;
-    width: 70%;
+    width: 95%;
+    max-width: 1280px;
     margin: 20px auto;
     border-radius: 8px;
     background-color: #f3f3f3;
@@ -15,7 +16,9 @@
 }
 .carrinho-header{
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
+    gap: 12px;
     align-items: center;
     justify-content: space-between;
     background-color: #e4e4e4;
@@ -23,6 +26,7 @@
     margin-bottom: 16px;
     border-radius: 6px;
     color: #151515;
+    text-align: center;
 }
 .carrinho-resumo{
     display: flex;
@@ -68,7 +72,7 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    gap: 20px;
+    gap: 16px;
 }
 .carrinho-item .item-imagem{
     display: flex;
@@ -83,14 +87,21 @@
 }
 .item-info{
     display: flex;
+    width: 100%;
     flex-direction: column;
     gap: 8px;
     color: #191919;
 }
-.item-detalhes{
+.item-nome{
     display: flex;
     width: 100%;
     justify-content: space-between;
+}
+.item-detalhes{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    width: 90%;
 }
 .item-quantidade{
     display: flex;
@@ -98,8 +109,48 @@
 }
 .item-valor{
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 30px;
+    justify-content: center;
+    width: 40%;
     height: fit-content;
+    color: #fff;
+    padding: 8px;
+    border-radius: 4px;
+    background-color: #151515;
+}
+
+@media screen and (max-width: 1024px){
+    .carrinho-item .item-imagem{
+        display: flex;
+        width: 100px;
+        height: 70px;
+    }
+}
+
+@media screen and (max-width: 780px){
+    .carrinho-container{
+        flex-direction: column;
+        gap: 8rem;
+        align-items: center;
+    }
+    .carrinho-header{
+        justify-content: center;
+    }
+    .carrinho-resumo{
+        width: 100%;
+    }
+    .carrinho-item .item-imagem{
+        display: flex;
+        width: 100px;
+        height: 70px;
+    }
+    .item-detalhes{
+        flex-direction: column;
+        width: 100%;
+    }
+    .item-valor{
+        width: fit-content;
+        height: fit-content;
+    }
+    
 }
