@@ -133,7 +133,11 @@ $labels = [
                                 <i class="fa-regular fa-calendar-days"></i>
                                 <?php echo $itemDetalhes["labelDataPasseio"] ?>
                             </label>
-                            <input type="date" name="chooseDate" id="chooseDate" />
+                            <input
+                                type="date"
+                                placeholder="dd/mm/aaaa"
+                                name="chooseDate"
+                                id="chooseDate" />
                         </section>
 
                         <section class="details local-boarding">

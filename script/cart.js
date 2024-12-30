@@ -5,59 +5,65 @@ const addToCartButton = document.querySelector('#addToCart');
 if (addToCartButton) {
     addToCartButton.addEventListener('click', () => {
 
-    const horarioPasseioElement = document.querySelector('#chooseHour');
-    const localEmbarqueElement = document.querySelector('#chooseLocal');
-    const dataPasseioElement = document.querySelector('#chooseDate');
+        const horarioPasseioElement = document.querySelector('#chooseHour');
+        const localEmbarqueElement = document.querySelector('#chooseLocal');
+        const dataPasseioElement = document.querySelector('#chooseDate');
+
+        // Formatar data
+        const selectedDate = new Date(dataPasseioElement);
+        dateFormated = selectedDate.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+        console.log(dateFormated)
 
 
-    // Verificar se a data foi selecionada
-    if (!dataPasseioElement || !dataPasseioElement.value) {
-        dataPasseioElement.style.border = '1px solid red';
-        alert('Por favor, selecione uma data de passeio válida.');
-        return;
-    }
+        // Verificar se a data foi selecionada
+        if (!dataPasseioElement || !dataPasseioElement.value) {
+            dataPasseioElement.style.border = '1px solid red';
+            alert('Por favor, selecione uma data de passeio válida.');
+            return;
+        }
 
-    // Verificar se o horário foi selecionado
-    if (!horarioPasseioElement) {
-        horarioPasseioElement.style.border = '1px solid red';
-        alert('Por favor, selecione um horário de passeio válido.');
-        return;
-    }
+        // Verificar se o horário foi selecionado
+        if (!horarioPasseioElement) {
+            horarioPasseioElement.style.border = '1px solid red';
+            alert('Por favor, selecione um horário de passeio válido.');
+            return;
+        }
 
-    // Verificar se o local de embarque foi selecionado
-    if (!localEmbarqueElement) {
-        localEmbarqueElement.style.border = '1px solid red';
-        alert('Por favor, selecione um local de embarque válido.');
-        return;
-    }
+        // Verificar se o local de embarque foi selecionado
+        if (!localEmbarqueElement) {
+            localEmbarqueElement.style.border = '1px solid red';
+            alert('Por favor, selecione um local de embarque válido.');
+            return;
+        }
 
-    const detalhes = {
-        id: itemDetalhes.id,
-        imagemCapa: itemDetalhes.imagemCapa,
-        nome: itemDetalhes.nome,
-        descricaoSite: itemDetalhes.descricaoSite,
-        valorDestaque: itemDetalhes.valorDestaque || 0,
-        quantidades: {},
-        horarioPasseio: horarioPasseioElement.value,
-        localEmbarque: localEmbarqueElement.value,
-        dataPasseio: dataPasseioElement.value
-    };
+        const detalhes = {
+            id: itemDetalhes.id,
+            imagemCapa: itemDetalhes.imagemCapa,
+            nome: itemDetalhes.nome,
+            descricaoSite: itemDetalhes.descricaoSite,
+            valorDestaque: itemDetalhes.valorDestaque || 0,
+            quantidades: {},
+            horarioPasseio: horarioPasseioElement.value,
+            localEmbarque: localEmbarqueElement.value,
+            dataPasseio: dataPasseioElement.value
+        };
 
-    document.querySelectorAll('.quantity-input').forEach(input => {
-        const key = input.dataset.key;
-        const value = parseInt(input.value, 10) || 0;
-        detalhes.quantidades[key] = value;
-    });
+        document.querySelectorAll('.quantity-input').forEach(input => {
+            const key = input.dataset.key;
+            const value = parseInt(input.value, 10) || 0;
+            detalhes.quantidades[key] = value;
+        });
 
-    // Verificar as quantidades
-    const totalQuantidade = Object.values(detalhes.quantidades).reduce((acc, cur) => acc + cur, 0);
-    if (totalQuantidade === 0) {
-        alert('Por favor, selecione pelo menos 1 pessoa.');
-        return;
-    }
+        // Verificar as quantidades
+        const totalQuantidade = Object.values(detalhes.quantidades).reduce((acc, cur) => acc + cur, 0);
+        if (totalQuantidade === 0) {
+            alert('Por favor, selecione pelo menos 1 pessoa.');
+            return;
+        }
 
-    adicionarAoCarrinho(detalhes);
-})};
+        adicionarAoCarrinho(detalhes);
+    })
+};
 
 
 function adicionarAoCarrinho(itemDetalhes) {
@@ -112,44 +118,45 @@ function listarCarrinho() {
         const valorBruto = item.valorDestaque || '0';
         const valorNumerico = parseFloat(valorBruto.replace('R$', '').replace('.', '').replace(',', '.')) || 0;
 
-        const quantidadeTotalItem = Object.values(item.quantidades).reduce((acc, cur) => acc + cur, 0);
-        const valorTotalItem = valorNumerico * quantidadeTotalItem;
+        // Adiciona ao valor total de acordo com a quantidade de pessoas!
+        // const quantidadeTotalItem = Object.values(item.quantidades).reduce((acc, cur) => acc + cur, 0);
+        // const valorTotalItem = valorNumerico * quantidadeTotalItem;
 
-        valorTotal += valorTotalItem;
+        valorTotal += valorNumerico;
 
         itemDiv.innerHTML = `
-      <div class="item-imagem">
-        <img src="${imagemCapa}" alt="Imagem do ${item.nome}"/>
-      </div>
-
-      <section class="item-detalhes">
-        <div class="item-info">
-            <div class="item-nome">
-                <h2>${item.nome}</h2>
-                <button style="display: flex; align-items: center; color: white; gap: 8px; background-color: red;" onclick="removerItem(${JSON.stringify(item.id)})">
-                    <i class="fa-solid fa-trash-can"></i>
-                </button>
-            </div>
-
-            <p><i class="fa-regular fa-clock"></i> ${item.horarioPasseio}</p>
-            <p><i class="fa-solid fa-location-dot"></i> ${item.localEmbarque}</p>
-            <p><i class="fa-regular fa-calendar-days"></i> ${item.dataPasseio}</p>
-
-            <div class="item-quantidade">
-                <i class="fa-solid fa-users"></i>
-                <ul>
-                ${Object.entries(item.quantidades)
-                    .map(([key, value]) => value > 0 ? `<li>${key.replace('label', '')}: ${value}</li>` : null)
-                    .filter(Boolean)
-                    .join('')}
-                </ul>
-            </div>
+        <div class="item-imagem">
+            <img src="${imagemCapa}" alt="Imagem do ${item.nome}"/>
         </div>
-  
-        <div class="item-valor">
-          <h3>${item.valorDestaque || 'Não informado'}</h3>
-        </div>
-      </section>
+
+        <section class="item-detalhes">
+            <div class="item-info">
+                <div class="item-nome">
+                    <h2>${item.nome}</h2>
+                    <button style="display: flex; align-items: center; color: white; gap: 8px; background-color: red;" onclick="removerItem(${JSON.stringify(item.id)})">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </div>
+
+                <p><i class="fa-regular fa-clock"></i> ${item.horarioPasseio}</p>
+                <p><i class="fa-solid fa-location-dot"></i> ${item.localEmbarque}</p>
+                <p><i class="fa-regular fa-calendar-days"></i> ${item.dataPasseio}</p>
+
+                <div class="item-quantidade">
+                    <i class="fa-solid fa-users"></i>
+                    <ul>
+                    ${Object.entries(item.quantidades)
+                .map(([key, value]) => value > 0 ? `<li>${key.replace('label', '')}: ${value}</li>` : null)
+                .filter(Boolean)
+                .join('')}
+                    </ul>
+                </div>
+            </div>
+    
+            <div class="item-valor">
+            <h3>${item.valorDestaque || 'Não informado'}</h3>
+            </div>
+        </section>
     `;
         carrinhoContainer.appendChild(itemDiv);
     });
